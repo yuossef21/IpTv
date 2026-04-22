@@ -85,8 +85,24 @@ input {
     background: var(--panel-bg);
     padding: 40px;
     border-radius: 12px;
-    width: 400px;
+    width: 420px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.cors-notice {
+    background: #1e3a5f;
+    border: 1px solid #2563eb;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #93c5fd;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cors-notice a {
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .input-group {
@@ -101,6 +117,11 @@ input {
     background: var(--primary);
     padding: 12px;
     margin-top: 10px;
+    font-size: 15px;
+}
+
+#login-btn:hover {
+    background: #2563eb;
 }
 
 .error-message {
@@ -117,10 +138,11 @@ input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 12px 25px;
     background: var(--panel-bg);
     border-bottom: 1px solid #2a2f45;
     gap: 15px;
+    flex-shrink: 0;
 }
 
 .search-box {
@@ -169,6 +191,7 @@ input {
     display: flex;
     flex-direction: column;
     height: calc(100vh - 70px);
+    overflow: hidden;
 }
 
 .content-body {
@@ -183,6 +206,7 @@ input {
     overflow-y: auto;
     border-left: 1px solid #2a2f45;
     direction: ltr;
+    flex-shrink: 0;
 }
 
 .sidebar>div {
@@ -297,6 +321,7 @@ input {
     overflow-x: auto;
     border-bottom: 1px solid #1e2233;
     background: #151824;
+    flex-shrink: 0;
 }
 
 .season-btn {
@@ -342,6 +367,16 @@ input {
 }
 
 /* Player */
+.player-header {
+    height: 56px;
+}
+
+.player-controls-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 #player-container {
     flex: 1;
     background: #000;
@@ -349,6 +384,7 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 #video-wrapper {
@@ -359,15 +395,23 @@ input {
     align-items: center;
 }
 
+/* أجعل Video.js يملأ الحاوية بالكامل */
+.video-js {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 select {
     background: #1e2233;
     color: white;
     border: 1px solid #3d4465;
-    padding: 8px;
+    padding: 6px 10px;
     border-radius: 4px;
     outline: none;
+    font-size: 13px;
 }
 
+/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
