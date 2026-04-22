@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRO IPTV CORE - Senior Edition</title>
+
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="login-screen" class="screen active">
+        <div class="login-container">
+            <h2>تسجيل الدخول للنظام</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label>رابط السيرفر (مع البورت)</label>
+                    <input type="url" id="server-url" placeholder="http://darhome.xyz:8080" required>
+                </div>
+                <div class="input-group">
+                    <label>اسم المستخدم</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="input-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" id="login-btn">اتصال بالسيرفر</button>
+                <div id="login-error" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="dashboard-screen" class="screen">
+        <header class="main-header">
+            <div class="logo">PRO IPTV CORE</div>
+            <div class="user-info">
+                <span id="display-user"></span>
+                <button id="logout-btn" class="btn-danger">تسجيل الخروج</button>
+            </div>
+        </header>
+
+        <main class="dashboard-grid" id="main-dash">
+            <div class="dash-card live" data-type="live">
+                <h3>LIVE TV</h3>
+                <p>البث المباشر</p>
+            </div>
+            <div class="dash-card movies" data-type="movies">
+                <h3>MOVIES</h3>
+                <p>الأفلام</p>
+            </div>
+            <div class="dash-card series" data-type="series">
+                <h3>SERIES</h3>
+                <p>المسلسلات</p>
+            </div>
+        </main>
+
+        <div class="content-layout" id="content-view" style="display: none;">
+            <div class="content-toolbar">
+                <button id="back-to-dash-btn" class="btn-secondary">⬅ العودة للرئيسية</button>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="بحث شامل في السيرفر...">
+                </div>
+                <h2 id="content-title">القسم</h2>
+            </div>
+            <div class="content-body">
+                <aside class="sidebar" id="categories-list"></aside>
+                <main class="streams-grid" id="streams-list"></main>
+            </div>
+        </div>
+    </div>
+
+    <div id="series-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="series-title-display">تفاصيل المسلسل</h3>
+                <button id="close-modal-btn" class="btn-danger">✖ إغلاق</button>
+            </div>
+            <div class="seasons-tabs" id="seasons-container"></div>
+            <div class="episodes-grid" id="episodes-container"></div>
+        </div>
+    </div>
+
+    <div id="player-screen" class="screen">
+        <header class="player-header">
+            <button id="close-player-btn" class="btn-secondary">⬅ إغلاق المشغل</button>
+            <h2 id="player-title">جاري التشغيل...</h2>
+            <div class="engine-selector">
+                <select id="engine-select">
+                    <option value="hlsjs">Hls.js (خام/سريع ومستقر)</option>
+                    <option value="videojs">Video.js (تقليدي)</option>
+                </select>
+            </div>
+        </header>
+        <div id="player-container">
+            <div id="video-wrapper">
+                <video id="main-video" class="video-js vjs-default-skin" controls preload="auto"
+                    style="width:100%; height:100%; object-fit:contain;"></video>
+            </div>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
